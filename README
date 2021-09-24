@@ -1,0 +1,52 @@
+hw-02
+-----
+
+This repository is for deploying a simple HTTP server that responds
+with a "Hello, World!" message for any request to "/" HTTP endpoint.
+
+
+FILES
+
+  - hello.go
+    HTTP server to respond with the message, complied as a
+    static binary.
+
+  - Dockerfile
+    To build a lightweight Docker image (just the binary;
+    i.e., from "scratch"), to be uploaded to DockerHub [1]
+    and deployed on Google Cloud Run and Google Kubernetes
+    Engine (GKE).
+
+  - k8s-hello-svc.yaml
+    Kubernetes manifest for deploying the application with
+    deployment (for the pod), service (as a NodePort) and
+    an ingress to be deployed on GKE.
+
+  - images/*.png
+    This directory contains relevant screen-shots for the homework.
+      (a): jupyter.png [2]
+           Running a Jupyter Notebook locally by pulling the Docker
+           image for mcr.microsoft.com/mmlspark/release and running
+           it as a container on http://localhost:8888.
+
+      (b): gcr.png [3]
+           Download the Docker image from DockerHub (which uploaded
+           previously), tag and upload it to Google Container Registry.
+           Then, deploy the app on Google Cloud Run as a service and
+           test the endpoint.
+
+      (c): gke-0{0,1}.png [4][5]
+           Create a Kubernetes cluster and deploy the application
+           (from the "k8s-hello-svc.yaml" manifest) as an ingress,
+           and test the endpoint.
+
+  - Makefile
+    Helper for building the binary, Docker image and uploading it
+    to DockerHub.
+
+
+[1]: https://hub.docker.com/r/skaushik0/14-848-hw-02
+[2]: https://github.com/skaushik0/14-848-hw-02/blob/master/images/jupyter.png
+[3]: https://github.com/skaushik0/14-848-hw-02/blob/master/images/gcr.png
+[4]: https://github.com/skaushik0/14-848-hw-02/blob/master/images/gke-00.png
+[5]: https://github.com/skaushik0/14-848-hw-02/blob/master/images/gke-01.png
